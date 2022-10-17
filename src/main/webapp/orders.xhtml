@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
+</h:head>
+
+<h:body>
+    <style type="text/css">
+        /* Style the header with a grey background and some padding */
+        .header {
+            overflow: hidden;
+            background-color: #0091cd;
+            padding: 20px 10px;
+            margin: 30px 10px;
+            border-radius: 20px;
+        }
+
+        /* Style the header links */
+        .header a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+        /* Style the logo link */
+        .header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* Change the background color on mouse-over */
+        .header a:hover {
+            background-color: dodgerblue;
+            color: black;
+        }
+
+        /* Style the active/current link*/
+        .header a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        /* Float the link section to the right */
+        .header-right {
+            float: right;
+        }
+
+        /* Style box layout */
+        .box {
+            background-color: #e3e5e8;
+            text-align: left;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            border-radius: 4px;
+            color: #30383c;
+        }
+
+        /* Style the card layout */
+        .card {
+            margin-left: 15em;
+            margin-right: 15em;
+        }
+
+        /* Style text layout */
+        .text {
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+
+        /* Style footer layout */
+        .footer {
+            position: fixed;
+            padding: 4px;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #0091cd;
+            color: white;
+        }
+
+        /* Float some footer values right */
+        .footer-right {
+            float: right;
+        }
+    </style>
+
+    <!-- Header of the startpage -->
+    <div class="header">
+        <h:outputLink value="startpage.xhtml" class="logo">Logo</h:outputLink>
+        <div class="header-right">
+            <h:outputLink value="startpage.xhtml">Startseite</h:outputLink>
+            <h:outputLink class="active" value="orders.xhtml">Auftragsübersicht</h:outputLink>
+            <h:outputLink value="startpage.xhtml">Mein Konto</h:outputLink>
+            <h:outputLink value="startpage.xhtml">Kontakt</h:outputLink>
+        </div>
+    </div>
+
+    <!-- Content of the startpage -->
+    <h:form>
+        <div class="card">
+            <p:dataTable var="order" value="#{orderView.orders}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{order.id}" />
+                </p:column>
+
+                <p:column headerText="Kundenname">
+                    <h:outputText value="#{order.customer_name}" />
+                </p:column>
+
+                <p:column headerText="Adresse">
+                    <h:outputText value="#{order.customer_address}" />
+                </p:column>
+
+                <p:column headerText="Stadt">
+                    <h:outputText value="#{order.customer_city}" />
+                </p:column>
+
+                <p:column headerText="PLZ">
+                    <h:outputText value="#{order.customer_plz}" />
+                </p:column>
+
+                <p:column headerText="Preisklasse">
+                    <h:outputText value="#{order.price_class}"/>
+                </p:column>
+
+                <p:column headerText="Statuscode">
+                    <h:outputText value="#{order.order_status}"/>
+                </p:column>
+            </p:dataTable>
+        </div>
+    </h:form>
+
+    <!-- Footer startpage -->
+    <div class="footer">
+        Logistikunternehmen X GmbH
+        <div class="footer-right">
+            <h:outputLink value="startpage.xhtml">Impressum</h:outputLink>
+            <h:outputText value="    ">     </h:outputText>
+            <h:outputLink value="startpage.xhtml">Datenschutzerklärung</h:outputLink>
+        </div>
+    </div>
+
+</h:body>
+</html>

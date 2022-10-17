@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
+</h:head>
+
+<h:body>
+    <style type="text/css">
+        /* Style the header with a grey background and some padding */
+        .header {
+            overflow: hidden;
+            background-color: #0091cd;
+            padding: 20px 10px;
+            margin: 30px 10px;
+            border-radius: 20px;
+        }
+
+        /* Style the header links */
+        .header a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+        /* Style the logo link */
+        .header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* Change the background color on mouse-over */
+        .header a:hover {
+            background-color: dodgerblue;
+            color: black;
+        }
+
+        /* Style the active/current link*/
+        .header a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        /* Float the link section to the right */
+        .header-right {
+            float: right;
+        }
+
+        /* Style box layout */
+        .box {
+            background-color: #e3e5e8;
+            text-align: left;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            border-radius: 4px;
+            color: #30383c;
+        }
+
+        /* Style the card layout */
+        .card {
+            margin-left: 25em;
+            margin-right: 25em;
+        }
+
+        /* Style text layout */
+        .text {
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+
+        /* Style footer layout */
+        .footer {
+            position: fixed;
+            padding: 4px;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #0091cd;
+            color: white;
+        }
+
+        /* Float some footer values right */
+        .footer-right {
+            float: right;
+        }
+    </style>
+
+    <!-- Header of the startpage -->
+    <div class="header">
+        <h:outputLink value="startpage.xhtml" class="logo">Logo</h:outputLink>
+        <div class="header-right">
+            <h:outputLink class="active" value="startpage.xhtml">Startseite</h:outputLink>
+            <h:outputLink value="orders.xhtml">Auftragsübersicht</h:outputLink>
+            <h:outputLink value="startpage.xhtml">Mein Konto</h:outputLink>
+            <h:outputLink value="startpage.xhtml">Kontakt</h:outputLink>
+        </div>
+    </div>
+
+    <!-- Content of the startpage -->
+    <h:form id="form">
+        <!-- Endkundeninformation -->
+        <div class="card">
+            <div class="grid flex-column">
+                <div class="col">
+                    <div class="box">
+                        <div class="text">
+                            <h4>Endkundeninformation</h4>
+                            <div class="ui-fluid formgrid grid">
+                                <div class="field col-12">
+                                    <p:outputLabel for="name" value="Name"/>
+                                    <p:inputText id="name" required="true" value="#{orderView.new_customer_name}"/>
+                                </div>
+                                <div class="field col-12">
+                                    <p:outputLabel for="address" value="Straße und Hausnummer"/>
+                                    <p:inputText id="address" required="true" value="#{orderView.new_customer_address}"/>
+                                </div>
+                                <div class="field col-12 md:col-6">
+                                    <p:outputLabel for="stadt" value="Stadt"/>
+                                    <p:inputText id="stadt" required="true" value="#{orderView.new_customer_city}"/>
+                                </div>
+                                <div class="field col-12 md:col-3">
+                                    <p:outputLabel for="bundesland" value="Bundesland"/>
+                                    <p:selectOneMenu id="bundesland">
+                                        <f:selectItem itemLabel="Bitte auswählen" itemValue="#{null}" noSelectionOption="true"/>
+                                        <f:selectItem itemLabel="Baden-Württemberg" itemValue="BW"/>
+                                        <f:selectItem itemLabel="Bayern" itemValue="BY"/>
+                                        <f:selectItem itemLabel="Berlin" itemValue="BE"/>
+                                        <f:selectItem itemLabel="Brandenburg" itemValue="BB"/>
+                                        <f:selectItem itemLabel="Bremen" itemValue="HB"/>
+                                        <f:selectItem itemLabel="Hamburg" itemValue="HH"/>
+                                        <f:selectItem itemLabel="Hessen" itemValue="HE"/>
+                                        <f:selectItem itemLabel="Mallorca" itemValue="MA"/>
+                                        <f:selectItem itemLabel="Mecklenburg-Vorpommern" itemValue="MV"/>
+                                        <f:selectItem itemLabel="Niedersachsen" itemValue="NI"/>
+                                        <f:selectItem itemLabel="Nordrhein-Westfalen" itemValue="NRW"/>
+                                        <f:selectItem itemLabel="Rheinland-Pfalz" itemValue="RP"/>
+                                        <f:selectItem itemLabel="Saarland" itemValue="SL"/>
+                                        <f:selectItem itemLabel="Sachsen" itemValue="SL"/>
+                                        <f:selectItem itemLabel="Sachsen" itemValue="SN"/>
+                                        <f:selectItem itemLabel="Sachsen-Anhalt" itemValue="ST"/>
+                                        <f:selectItem itemLabel="Schleswig-Holstein" itemValue="SH"/>
+                                        <f:selectItem itemLabel="Thüringen" itemValue="TH"/>
+                                    </p:selectOneMenu>
+                                </div>
+                                <div class="field col-12 md:col-3">
+                                    <p:outputLabel for="zip" value="PLZ"/>
+                                    <p:inputText id="zip" required="true" value="#{orderView.new_customer_plz}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="grid flex-column">
+                <div class="col">
+                    <div class="box">
+                        <div class="text">
+                            <h4>Artikelinformation</h4>
+                            <div class="ui-fluid formgrid grid">
+                                <div class="field col-6">
+                                    <p:outputLabel for="article_def" value="Artikel-Bezeichnung"/>
+                                    <p:inputText id="article_def" title="Geben Sie bitte eine Bezeichnung an."/>
+                                    <p:tooltip for="article_def" showEvent="focus" hideEvent="blur" position="top"/>
+                                </div>
+                                <div class="field col-6">
+                                    <p:outputLabel for="weight" value="Artikel Gewicht in Kilogramm" />
+                                    <p:inputText id="weight" required="true" title="Geben Sie bitte das Gewicht des Artikels in Kilogramm an."/>
+                                    <p:tooltip for="weight" showEvent="focus" hideEvent="blur" position="top"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h:commandButton value="Neuen Auftrag verbindlich erstellen" action="#{orderView.submitOrder}" />
+        </div>
+
+    </h:form>
+
+    <!-- Footer startpage -->
+    <div class="footer">
+        Logistikunternehmen X GmbH
+        <div class="footer-right">
+            <h:outputLink value="startpage.xhtml">Impressum</h:outputLink>
+            <h:outputText value="    ">     </h:outputText>
+            <h:outputLink value="startpage.xhtml">Datenschutzerklärung</h:outputLink>
+        </div>
+    </div>
+
+</h:body>
+</html>
